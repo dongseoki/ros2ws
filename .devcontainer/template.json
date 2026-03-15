@@ -23,11 +23,11 @@
     }
   },
   "containerEnv": {
-    "DISPLAY": "host.docker.internal:0",
+    "DISPLAY": "{{DISPLAY}}",
     "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
     "ROS_DOMAIN_ID": "42"
   },
-  "runArgs": ["--ipc=host"],
-  
+  "runArgs": {{RUN_ARGS}},
+  {{MOUNTS}}
   "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R $(whoami) /home/ws/"
 }
